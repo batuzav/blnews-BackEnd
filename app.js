@@ -12,7 +12,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(isAuth);
+// app.use(isAuth);
 app.use(require("./graphql/index"));
 
 mongoose

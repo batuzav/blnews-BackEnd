@@ -15,10 +15,7 @@ const campaignSchema = new Schema({
     type: String,
     required: true,
   },
-  country: {
-    type: Array,
-    required: true,
-  },
+  country: [String],
   img: {
     type: String,
     required: true,
@@ -28,13 +25,22 @@ const campaignSchema = new Schema({
     required: true,
   },
   startDate: {
-    type: Number,
+    type: Date,
     required: true,
   },
   endDate: {
+    type: Date,
+    required: true,
+  },
+  allUsers: {
+    type: Boolean,
+    default: false,
+  },
+  status: {
     type: Number,
     required: true,
   },
+  category: [String],
 });
 
 module.exports = mongoose.model("Campaign", campaignSchema);
