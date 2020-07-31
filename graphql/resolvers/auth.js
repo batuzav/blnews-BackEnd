@@ -1,9 +1,10 @@
-const User = require("../../../models/usersModel");
+const User = require("../../models/usersModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { updateUserTokkenApp } = require("../resolvers/users");
 
 module.exports = {
-  login: async ({ dibNumber, password }) => {
+  login: async ({ dibNumber, password, tokkenApp }) => {
     const user = await User.findOne({ dibNumber });
     if (!user) {
       throw new Error("Usuario no existe");
@@ -19,7 +20,13 @@ module.exports = {
         expiresIn: "1h",
       }
     );
-    return { userId: user._id, token, tokeExpiration: 1, user };
+    const newUser = await updateUserTokkenApp({ id: user._id, tokkenApp });
+    return {
+      userId: user._id,
+      token,
+      tokeExpiration: 1,
+      user: newUser,
+    };
   },
   checkLogin: async (args, req) => {
     let isAuth = true;

@@ -21,6 +21,8 @@ type User {
     email: String!
     timezone: String!
     phone: String!
+    tokkenApp: String
+    contriesToSee: [String!]
   }
 
   type Contact {
@@ -77,14 +79,19 @@ type User {
     email: String!
     timezone: String!
     phone: String!
+    tokkenApp: String
+    contriesToSee: [String!]
   }
 
   type RootQuery {
       users: [User!]!
-      login(dibNumber: String!, password: String!): AuthData!
+      login(dibNumber: String!, password: String!, tokkenApp: String!): AuthData!
       checkLogin: tokenAuth!
       Campaigns: [Campaign!]!
+      getActiveCampaigns: [Campaign!]!
       getCampaignsByCategory(category: String!):[Campaign!]!
+      getCampaignById(id: ID!): Campaign!
+      updateUserTokkenApp(id: ID!, tokkenApp: String!): User!
 
 
   }

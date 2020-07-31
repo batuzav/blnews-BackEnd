@@ -31,6 +31,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  tokkenApp: {
+    type: String,
+    default: "none",
+  },
+  contriesToSee: {
+    type: [String],
+    default: ["MEX"],
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);

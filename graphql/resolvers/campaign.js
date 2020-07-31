@@ -1,4 +1,5 @@
 const Campaign = require("../../models/CampaignModel");
+const moment = require("moment");
 
 module.exports = {
   createCampaign: (args) => {
@@ -56,7 +57,11 @@ module.exports = {
       });
   },
   getActiveCampaigns: () => {
-    return Campaign.find()
+    const now = moment().toDate();
+    return Campaign.find({
+      startDate: { $lte: now.valueOf() },
+      endDate: { $gte: now.valueOf() },
+    })
       .then((Campaigns) => {
         return Campaigns.map((campaign) => {
           return { ...campaign._doc, _id: campaign.id };
@@ -76,5 +81,18 @@ module.exports = {
         });
       }
     );
+  },
+  getCampaignById: async ({ id }) => {
+    const campaign = await Campaign.findByIdAsync({ _id: id }).then(
+      (findedCampaign) => {
+        return findedCampaign;
+      }
+    );
+    console.log("Campaña: ", campaign);
+    if (!campaign) {
+      throw new Error("Campaña no existe...");
+    }
+
+    return campaign;
   },
 };

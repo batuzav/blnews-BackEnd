@@ -1,6 +1,6 @@
-const usersResolver = require("./users/users");
-const authResolver = require("./auth/auth");
-const contactsResolver = require("./contacts/contacts");
+const usersResolver = require("./users");
+const authResolver = require("./auth");
+const contactsResolver = require("./contacts");
 const campaignResolver = require("./campaign");
 
 const rootResolver = {

@@ -15,7 +15,10 @@ const campaignSchema = new Schema({
     type: String,
     required: true,
   },
-  country: [String],
+  country: {
+    type: [String],
+    required: true,
+  },
   img: {
     type: String,
     required: true,
@@ -40,7 +43,10 @@ const campaignSchema = new Schema({
     type: Number,
     required: true,
   },
-  category: [String],
+  category: {
+    type: [String],
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Campaign", campaignSchema);

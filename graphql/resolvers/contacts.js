@@ -1,4 +1,4 @@
-const Contact = require("../../../models/ContactAppModal");
+const Contact = require("../../models/ContactAppModal");
 
 module.exports = {
   createContact: (args) => {
