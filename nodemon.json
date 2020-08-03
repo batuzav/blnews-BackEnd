@@ -1,6 +1,0 @@
-{
-  "env": {
-    "DB": "mongodb+srv://user:ff258456@cluster0-qdmsk.mongodb.net/bodylogictest?retryWrites=true&w=majority",
-    "tokencrypt": "myBLNEWSserverit"
-  }
-}

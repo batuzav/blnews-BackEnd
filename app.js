@@ -1,3 +1,4 @@
+require("./config/config");
 const express = require("express");
 const bodyParser = require("body-parser");
 const Promise = require("bluebird");
@@ -20,8 +21,8 @@ app.use(require("./graphql/index"));
 mongoose
   .connect(`${process.env.DB}`, { useFindAndModify: false })
   .then(() => {
-    const server = app.listen(3000, () => {
-      console.log("Se esta escuchando el puerto: 3000");
+    const server = app.listen(`${process.env.PORT}`, () => {
+      console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
     socketServer.startSocketServer(server);
   })
