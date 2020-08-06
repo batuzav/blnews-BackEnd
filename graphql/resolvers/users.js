@@ -19,17 +19,27 @@ module.exports = {
           email: args.userInput.email,
           timezone: args.userInput.timezone,
           phone: args.userInput.phone,
+          countriesToSee: args.userInput.countriesToSee,
         });
         return user.save();
       })
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         return { ...result._doc, _id: result._doc._id.toString() };
       })
       .catch((err) => {
         console.log(err);
         throw err;
       });
+  },
+  getUsersByCountries: ({ countries }) => {
+    console.log("countries", countries);
+    return User.find({ active: true }).then((users) => {
+      return users.map((user) => {
+        const inside = arraysContains(countries, user.countriesToSee);
+        if (inside) return { ...user._doc, _id: user.id };
+      });
+    });
   },
   updateUserTokkenApp: async ({ id, tokkenApp }) => {
     const userdb = await User.findOneAsync({ _id: id }).then((user) => {
@@ -52,4 +62,19 @@ module.exports = {
       });
     }
   },
+};
+
+const arraysContains = (_arr1, _arr2) => {
+  if (!Array.isArray(_arr1) || !Array.isArray(_arr2)) return false;
+  var arr1 = _arr1.concat().sort();
+  var arr2 = _arr2.concat().sort();
+
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr1[i] === arr2[j]) {
+        return true;
+      }
+    }
+  }
+  return false;
 };

@@ -15,6 +15,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  active: {
+    type: Boolean,
+    default: false,
+  },
   lastName: {
     type: String,
     required: true,
@@ -35,7 +39,7 @@ const userSchema = new Schema({
     type: String,
     default: "none",
   },
-  contriesToSee: {
+  countriesToSee: {
     type: [String],
     default: ["MEX"],
   },

@@ -73,14 +73,11 @@ module.exports = {
   },
   getCampaignsByCategory: ({ category }) => {
     console.log("categoria", category);
-    return Campaign.find({ category: { $all: [category] } }).then(
-      (Campaigns) => {
-        console.log("camañas: ", Campaigns);
-        return Campaigns.map((campaign) => {
-          return { ...campaign._doc, _id: campaign.id };
-        });
-      }
-    );
+    return Campaign.find({ category: { $in: category } }).then((Campaigns) => {
+      return Campaigns.map((campaign) => {
+        return { ...campaign._doc, _id: campaign.id };
+      });
+    });
   },
   getCampaignById: async ({ id }) => {
     const campaign = await Campaign.findByIdAsync({ _id: id }).then(

@@ -11,6 +11,10 @@ const campaignSchema = new Schema({
     type: String,
     required: true,
   },
+  bodyNotification: {
+    type: String,
+    required: false,
+  },
   description: {
     type: String,
     required: true,
@@ -46,6 +50,10 @@ const campaignSchema = new Schema({
   category: {
     type: [String],
     required: true,
+  },
+  notified: {
+    type: Boolean,
+    default: false,
   },
 });
 

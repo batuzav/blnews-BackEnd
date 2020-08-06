@@ -1,13 +1,12 @@
-const Campaign = require("../models/CampaignModel");
-const User = require("../models/usersModel");
 const cron = require("node-cron");
-const moment = require("moment");
+const {
+  sendPushNotificationAccordingCampaignAndUser,
+} = require("../graphql/resolvers/notification");
 
 const tusk = cron.schedule(
   "*/1 * * * *",
   () => {
-    var a = moment();
-    console.log("MOMENT: ", a.format());
+    sendPushNotificationAccordingCampaignAndUser();
   },
   {
     scheduled: false,

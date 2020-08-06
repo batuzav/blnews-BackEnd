@@ -4,13 +4,14 @@
   "description": "BackEnd de la aplicación MyBLNews",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js",
+    "test": "nodemon app.js",
     "start": "node app.js"
   },
-  "author": "",
+  "author": "BATUZAV",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
     "expo-server-sdk": "^3.5.1",
     "express": "^4.17.1",
@@ -22,7 +23,8 @@
     "mongoose": "^5.9.19",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "underscore": "^1.10.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

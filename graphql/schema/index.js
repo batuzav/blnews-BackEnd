@@ -22,7 +22,7 @@ type User {
     timezone: String!
     phone: String!
     tokkenApp: String
-    contriesToSee: [String!]
+    countriesToSee: [String!]
   }
 
   type Contact {
@@ -80,7 +80,7 @@ type User {
     timezone: String!
     phone: String!
     tokkenApp: String
-    contriesToSee: [String!]
+    countriesToSee: [String!]
   }
 
   type RootQuery {
@@ -89,7 +89,7 @@ type User {
       checkLogin: tokenAuth!
       Campaigns: [Campaign!]!
       getActiveCampaigns: [Campaign!]!
-      getCampaignsByCategory(category: String!):[Campaign!]!
+      getCampaignsByCategory(category: [String!]):[Campaign!]!
       getCampaignById(id: ID!): Campaign!
       updateUserTokkenApp(id: ID!, tokkenApp: String!): User!
 
