@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const isAuth = require("./middlware/is-Auth");
 const socketServer = require("./config/socket-server");
 const { tusk } = require("./cron/principalCron");
+const { notFound } = require("./middlware/not-Found");
 
 Promise.promisifyAll(mongoose);
 
@@ -15,6 +16,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(isAuth);
 app.use(require("./graphql/index"));
+app.get("*", (req, res) => {
+  return res.status(404).send(notFound);
+});
 
 tusk.start();
 
