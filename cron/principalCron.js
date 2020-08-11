@@ -6,7 +6,8 @@ const {
 const tusk = cron.schedule(
   "*/1 * * * *",
   () => {
-    sendPushNotificationAccordingCampaignAndUser();
+    // sendPushNotificationAccordingCampaignAndUser();
+    console.log("FUNCIONA HEROKU ");
   },
   {
     scheduled: false,

@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(isAuth);
 app.use(require("./graphql/index"));
 
-// tusk.start();
+tusk.start();
 
 mongoose
   .connect(`${process.env.DB}`, { useFindAndModify: false })
