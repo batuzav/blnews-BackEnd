@@ -46,7 +46,11 @@ module.exports = {
       });
   },
   Campaigns: () => {
-    return Campaign.find()
+    const now = moment().toDate();
+    return Campaign.find({
+      startDate: { $lte: now.valueOf() },
+      endDate: { $gte: now.valueOf() },
+    })
       .then((Campaigns) => {
         return Campaigns.map((campaign) => {
           return { ...campaign._doc, _id: campaign.id };
