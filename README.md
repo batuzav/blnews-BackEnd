@@ -11,10 +11,11 @@ El proyecto esta realizado en:
 - [Node.js](https://nodejs.org/es/)
 - [express.js](https://expressjs.com/es/)
 - [GraphQL](https://graphql.org/)
-- [MongoDB](https://www.mongodb.com/es).
+- [MongoDB](https://www.mongodb.com/es)
+
   **ESTE ES UN SERVIDOR NO VISUAL**
 
-## Como Clonar
+## Programas necesarios
 
 Para poder utilizar el proyecto en localhost en necesario clonarlo y tener algunos programas necesarios:
 
@@ -23,7 +24,9 @@ Para poder utilizar el proyecto en localhost en necesario clonarlo y tener algun
 - [PostMan](https://www.postman.com/downloads/) para puebas de APIS. (Opcional)
 - [Git](https://git-scm.com/downloads) para poder gestionar las versiones.
 
-Comandos para clonar:
+## Como Clonar
+
+Comando para clonar:
 
 ```bash
 cd existing_folder
