@@ -5,7 +5,14 @@ Acá se conecta la [aplicación móvil](https://gitlab.com/bodylogicit/react-rea
 
 ## Contenido
 
-El proyecto esta realizado en [Node.js](https://nodejs.org/es/) conbinando las tecnologías de [express.js](https://expressjs.com/es/), [GraphQL](https://graphql.org/) y [MongoDB](https://www.mongodb.com/es). **ESTE ES UN SERVIDOR NO VISUAL**
+Back-End controlador de usuraio y notocias.
+El proyecto esta realizado en:
+
+- [Node.js](https://nodejs.org/es/)
+- [express.js](https://expressjs.com/es/)
+- [GraphQL](https://graphql.org/)
+- [MongoDB](https://www.mongodb.com/es).
+  **ESTE ES UN SERVIDOR NO VISUAL**
 
 ## Como Clonar
 
@@ -13,7 +20,7 @@ Para poder utilizar el proyecto en localhost en necesario clonarlo y tener algun
 
 - [Nodejs](https://nodejs.org/es/download/) v12.18.0 o Superior.
 - IDE de desarrollo de tu comodidad Ej. [VS Code](https://code.visualstudio.com/download)
-- [PostMan](https://www.postman.com/downloads/) para puebas de APIS. -Opcional
+- [PostMan](https://www.postman.com/downloads/) para puebas de APIS. (Opcional)
 - [Git](https://git-scm.com/downloads) para poder gestionar las versiones.
 
 Comandos para clonar:
@@ -73,6 +80,6 @@ o si usted se encuentra en otro branch
 git push origin "your_branch"
 ```
 
-### Colaboradores
+### Autor
 
 Desarrollo realizado por [BATUZAV](https://batuzav.com)
