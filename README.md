@@ -1,4 +1,4 @@
-# 🖥 ...MyBL-News Back-End... 🖥👨‍🎤
+# ...MyBL-News Back-End...
 
 Este es el back-end del sistema de MyBL-News.
 Acá se conecta la [aplicación móvil](https://gitlab.com/bodylogicit/react-reactnative/mybl-news) y el [dashboard]().
@@ -60,29 +60,17 @@ Este a su vez ejecutará el comando node app.js el cual estará preparado para l
 
 Para poder subir cambios al repositorio es necesario utilizar los siguientes comandos.
 
+`git add .` o si lo prefiere `git add "./direction_file"`
+
 ```bash
-git add .
-```
-
-o si lo prefiere
-
-```
-bash
-git add "./direction_file"
-```
-
-```
-bash
 git commit -m "tu mensaje"
-
 git push origin master
 ```
 
 o si usted se encuentra en otro branch
 
-```
-bash
-git push origin "your_bnach"
+```bash
+git push origin "your_branch"
 ```
 
 ### Colaboradores
