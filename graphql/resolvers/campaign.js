@@ -15,6 +15,7 @@ module.exports = {
       allUsers,
       status,
       category,
+      imageBody,
     } = args.campaignInput;
     return Campaign.findOne({ title })
       .then((campaign) => {
@@ -33,6 +34,7 @@ module.exports = {
           allUsers,
           status,
           category,
+          imageBody,
         });
         return newCampaign.save();
       })
@@ -76,8 +78,13 @@ module.exports = {
       });
   },
   getCampaignsByCategory: ({ category }) => {
+    const now = moment().toDate();
     console.log("categoria", category);
-    return Campaign.find({ category: { $in: category } }).then((Campaigns) => {
+    return Campaign.find({
+      startDate: { $lte: now.valueOf() },
+      endDate: { $gte: now.valueOf() },
+      category: { $in: category },
+    }).then((Campaigns) => {
       return Campaigns.map((campaign) => {
         return { ...campaign._doc, _id: campaign.id };
       });

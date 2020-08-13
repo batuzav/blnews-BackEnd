@@ -51,6 +51,7 @@ type User {
     allUsers: Boolean!
     status: Int!
     category: [String!]
+    imageBody: String!
   }
 
   input CampaignInput {
@@ -65,6 +66,7 @@ type User {
     allUsers: Boolean!
     status: Int!
     category: [String!]
+    imageBody: String!
   }
 
   type tokenAuth {

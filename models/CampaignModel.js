@@ -55,6 +55,10 @@ const campaignSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  imageBody: {
+    type: String,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("Campaign", campaignSchema);
