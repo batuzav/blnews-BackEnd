@@ -13,5 +13,5 @@ const tusk = cron.schedule(
     timezone: "America/Mexico_City",
   }
 );
-
+//send notifications
 module.exports = { tusk };
