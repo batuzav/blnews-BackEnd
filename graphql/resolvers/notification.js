@@ -30,11 +30,7 @@ module.exports = {
               title: campaign.title,
               sound: "default",
               body: campaign.bodyNotification || campaign.subtitle,
-              android: {
-                priority: "max",
-                vibrate: [0, 250, 250, 250],
-                color: "#FF0000",
-              },
+              channelId: "chat-messages",
             });
           }
         });
