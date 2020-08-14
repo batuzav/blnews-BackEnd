@@ -20,6 +20,7 @@ module.exports = {
           timezone: args.userInput.timezone,
           phone: args.userInput.phone,
           countriesToSee: args.userInput.countriesToSee,
+          img: args.userInput.img,
         });
         return user.save();
       })

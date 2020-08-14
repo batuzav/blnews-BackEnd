@@ -23,6 +23,7 @@ type User {
     phone: String!
     tokkenApp: String
     countriesToSee: [String!]
+    img: String
   }
 
   type Contact {
@@ -83,6 +84,7 @@ type User {
     phone: String!
     tokkenApp: String
     countriesToSee: [String!]
+    img: String
   }
 
   type RootQuery {

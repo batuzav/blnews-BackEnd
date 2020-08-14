@@ -43,6 +43,10 @@ const userSchema = new Schema({
     type: [String],
     default: ["MEX"],
   },
+  img: {
+    type: String,
+    default: "none",
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);
