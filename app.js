@@ -5,8 +5,10 @@ const Promise = require("bluebird");
 const mongoose = require("mongoose");
 const isAuth = require("./middlware/is-Auth");
 const socketServer = require("./config/socket-server");
+const sql = require("mssql");
 const { tusk } = require("./cron/principalCron");
 const { notFound } = require("./middlware/not-Found");
+const { getConexion } = require("./XirectDB/XirectDBConect");
 
 Promise.promisifyAll(mongoose);
 
@@ -24,11 +26,22 @@ tusk.start();
 
 mongoose
   .connect(`${process.env.DB}`, { useFindAndModify: false })
-  .then(() => {
+  .then(async () => {
+    // const getDIB = await getConexion();
     const server = app.listen(`${process.env.PORT}`, () => {
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
     socketServer.startSocketServer(server);
+    // getDIB
+    //   .request()
+    //   .input("input_parameter", sql.Int, 1387785)
+    //   .query(
+    //     "Select LegacyNumber, concat (FirstName,' ', MiddleName,' ',LastName) As Nombre, * From tbl_Distributor where LegacyNumber like @input_parameter"
+    //   )
+    //   .then((result) => {
+    //     console.log(result.recordset);
+    //   })
+    //   .catch((err) => console.error(err));
   })
   .catch((err) => {
     console.log(err);

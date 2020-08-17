@@ -8,3 +8,5 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 process.env.DB =
   "mongodb+srv://user:ff258456@cluster0-qdmsk.mongodb.net/bodylogictest?retryWrites=true&w=majority";
 process.env.tokencrypt = "myBLNEWSserverit";
+
+//XIRECT DATBASE CONFIG
