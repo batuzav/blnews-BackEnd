@@ -10,3 +10,7 @@ process.env.DB =
 process.env.tokencrypt = "myBLNEWSserverit";
 
 //XIRECT DATBASE CONFIG
+process.env.xirectServer = "bodylogic.database.windows.net";
+process.env.xirectDataBase = "BodyLogic_Live";
+process.env.xirectUserDB = "bodylogicuser";
+process.env.xirectUserDBPassword = "UMw$a8Zx5gx5du";

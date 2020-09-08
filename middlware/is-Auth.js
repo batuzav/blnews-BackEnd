@@ -23,7 +23,7 @@ module.exports = (req, res, next) => {
     req.isAuth = false;
     return next();
   }
-  console.log("REQ EN MIDDLEWARE", req.isAuth);
+  console.log("REQ EN MIDDLEWARE", token);
   req.isAuth = true;
   req.userID = decodedToken.userId;
   next();

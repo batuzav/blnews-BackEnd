@@ -8,7 +8,7 @@ const sendNotificationWithExpoSDK = (messages) => {
     for (let chunk of chunks) {
       try {
         let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
-        console.log(ticketChunk);
+        console.log("thuk", ticketChunk);
         tickets.push(...ticketChunk);
       } catch (error) {
         console.error(error);
@@ -28,7 +28,7 @@ const sendNotificationWithExpoSDK = (messages) => {
     for (let chunk of receiptIdChunks) {
       try {
         let receipts = await expo.getPushNotificationReceiptsAsync(chunk);
-        console.log(receipts);
+        console.log("recipiente", receipts);
         for (let receiptId in receipts) {
           let { status, message, details } = receipts[receiptId];
           if (status === "ok") {

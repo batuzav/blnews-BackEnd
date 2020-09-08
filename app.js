@@ -9,7 +9,8 @@ const sql = require("mssql");
 const { tusk } = require("./cron/principalCron");
 const { notFound } = require("./middlware/not-Found");
 const { getConexion } = require("./XirectDB/XirectDBConect");
-
+const converter = require("json-2-csv");
+const fs = require("fs");
 Promise.promisifyAll(mongoose);
 
 const app = express();
@@ -36,10 +37,29 @@ mongoose
     //   .request()
     //   .input("input_parameter", sql.Int, 1387785)
     //   .query(
-    //     "Select LegacyNumber, concat (FirstName,' ', MiddleName,' ',LastName) As Nombre, * From tbl_Distributor where LegacyNumber like @input_parameter"
+    //     `SELECT
+    //   [PromoCode].Description,
+    //   [PromoCode].[PromoCode],
+    //   [PromoCodeDetail].[DistributorLegacyNumber],
+    //   [PromoCodeDetail].[OrderHeaderLegacyNumber],
+    //   [PromoCodeDetail].[CreatedDate]
+    //   FROM [dbo].[PromoCode]
+    //   inner join [PromoCodeDetail] on [PromoCodeDetail].[PromoCodeID] = [PromoCode].[ID]
+    //   where [PromoCodeDetail].[CreatedDate] BETWEEN '2020-06-01'  and '2020-06-30' order by [PromoCodeDetail].[CreatedDate];`
     //   )
     //   .then((result) => {
-    //     console.log(result.recordset);
+    //     // console.dir(result.recordset, { maxArrayLength: null });
+    //     converter.json2csv(result.recordset, (err, csv) => {
+    //       if (err) {
+    //         throw err;
+    //       }
+
+    //       // print CSV string
+    //       // console.log("CSV DEMOOO", csv);
+
+    //       // write CSV to a file
+    //       fs.writeFileSync("ReportePromocodeJUn.csv", csv);
+    //     });
     //   })
     //   .catch((err) => console.error(err));
   })

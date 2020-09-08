@@ -13,9 +13,15 @@ module.exports = {
     Campaign.find({
       startDate: { $lte: now.valueOf() },
       endDate: { $gte: now.valueOf() },
-      // notified: false,
+      notified: false,
     }).then((campaigns) => {
       campaigns.map(async (campaign) => {
+        const edit = await Campaign.findOneAndUpdateAsync(
+          { _id: campaign._id },
+          { notified: true },
+          { new: true }
+        );
+        console.log("edit", edit);
         let messages = [];
         let { country } = campaign;
         const users = await getUsersByCountries({ countries: country });
@@ -34,6 +40,7 @@ module.exports = {
           }
         });
         const Sending = await sendNotificationWithExpoSDK(messages);
+        console.log("Sending", Sending);
       });
     });
   },

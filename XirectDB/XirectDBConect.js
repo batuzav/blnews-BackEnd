@@ -1,9 +1,9 @@
 const sql = require("mssql");
 
 const config = {
-  server: "bodylogic.database.windows.net",
-  database: "BodyLogic_Live",
-  user: "bodylogicuser",
+  server: "",
+  database: "",
+  user: "",
   password: "UMw$a8Zx5gx5du",
   options: {
     encrypt: true,

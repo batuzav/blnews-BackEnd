@@ -17,7 +17,7 @@ module.exports = {
       { userId: user._id, dibNumber: user.dibNumber },
       `${process.env.tokencrypt}`,
       {
-        expiresIn: "1h",
+        expiresIn: "4h",
       }
     );
     const newUser = await updateUserTokkenApp({ id: user._id, tokkenApp });
