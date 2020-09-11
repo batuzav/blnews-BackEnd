@@ -5,6 +5,7 @@ const { updateUserTokkenApp } = require("../resolvers/users");
 
 module.exports = {
   login: async ({ dibNumber, password, tokkenApp }) => {
+    console.log("dibNumber", dibNumber);
     const user = await User.findOne({ dibNumber });
     if (!user) {
       throw new Error("Usuario no existe");
@@ -35,5 +36,19 @@ module.exports = {
       isAuth = false;
     }
     return { isAuth };
+  },
+  registerByApp: async (args) => {
+    const {
+      dibNumber,
+      email,
+      password,
+      confirmPassword,
+    } = args.registerByAppInput;
+    let isRegister = true;
+    if (password !== confirmPassword) {
+      isRegister = false;
+    }
+    console.log("isRegister", isRegister);
+    return { isRegister };
   },
 };

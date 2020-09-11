@@ -1,10 +1,10 @@
 const sql = require("mssql");
 
 const config = {
-  server: "",
-  database: "",
-  user: "",
-  password: "UMw$a8Zx5gx5du",
+  server: `${process.env.xirectServer}`,
+  database: `${process.env.xirectDataBase}`,
+  user: `${process.env.xirectUserDB}`,
+  password: `${process.env.xirectUserDBPassword}`,
   options: {
     encrypt: true,
     enableArithAbort: true,

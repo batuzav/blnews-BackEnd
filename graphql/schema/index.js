@@ -86,6 +86,15 @@ type User {
     countriesToSee: [String!]
     img: String
   }
+  input RegisterByAppInput {
+    dibNumber: String!
+    email: String!
+    password: String!
+    confirmPassword: String!
+  }
+  type RegisterAuth {
+    isRegister: Boolean!
+  }
 
   type RootQuery {
       users: [User!]!
@@ -104,6 +113,7 @@ type User {
     createUser(userInput: UserInput): User
     createContact(contactInput: ContactInput!): Contact
     createCampaign(campaignInput: CampaignInput): Campaign
+    registerByApp(registerByAppInput: RegisterByAppInput): RegisterAuth
 
   }
   schema {

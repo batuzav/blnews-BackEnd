@@ -32,34 +32,15 @@ mongoose
     const server = app.listen(`${process.env.PORT}`, () => {
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
-    socketServer.startSocketServer(server);
+    // socketServer.startSocketServer(server);
     // getDIB
     //   .request()
     //   .input("input_parameter", sql.Int, 1387785)
     //   .query(
-    //     `SELECT
-    //   [PromoCode].Description,
-    //   [PromoCode].[PromoCode],
-    //   [PromoCodeDetail].[DistributorLegacyNumber],
-    //   [PromoCodeDetail].[OrderHeaderLegacyNumber],
-    //   [PromoCodeDetail].[CreatedDate]
-    //   FROM [dbo].[PromoCode]
-    //   inner join [PromoCodeDetail] on [PromoCodeDetail].[PromoCodeID] = [PromoCode].[ID]
-    //   where [PromoCodeDetail].[CreatedDate] BETWEEN '2020-06-01'  and '2020-06-30' order by [PromoCodeDetail].[CreatedDate];`
+    //     "Select *  From tbl_Distributor where LegacyNumber like 1710000 OR LegacyNumber like 1710068"
     //   )
     //   .then((result) => {
-    //     // console.dir(result.recordset, { maxArrayLength: null });
-    //     converter.json2csv(result.recordset, (err, csv) => {
-    //       if (err) {
-    //         throw err;
-    //       }
-
-    //       // print CSV string
-    //       // console.log("CSV DEMOOO", csv);
-
-    //       // write CSV to a file
-    //       fs.writeFileSync("ReportePromocodeJUn.csv", csv);
-    //     });
+    //     console.dir(result.recordset, { maxArrayLength: null });
     //   })
     //   .catch((err) => console.error(err));
   })
