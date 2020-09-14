@@ -95,6 +95,10 @@ type User {
   type RegisterAuth {
     isRegister: Boolean!
   }
+  type CountriesToChange{
+    isChange: Boolean!
+    newUser: User
+  }
 
   type RootQuery {
       users: [User!]!
@@ -114,6 +118,7 @@ type User {
     createContact(contactInput: ContactInput!): Contact
     createCampaign(campaignInput: CampaignInput): Campaign
     registerByApp(registerByAppInput: RegisterByAppInput): RegisterAuth
+    changeCountriesToSee(dibNumber: String!, countriesToSee: [String!]): CountriesToChange
 
   }
   schema {

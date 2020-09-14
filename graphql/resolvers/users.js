@@ -63,6 +63,25 @@ module.exports = {
       });
     }
   },
+
+  changeCountriesToSee: async ({ dibNumber, countriesToSee }) => {
+    let isChange = true;
+    const userdb = await User.findOneAsync({ dibNumber }).then((user) => {
+      return user;
+    });
+    console.log("userdb", userdb);
+    if (!userdb) {
+      isChange = false;
+      return { isChange };
+    }
+    return User.findOneAndUpdate(
+      { dibNumber },
+      { countriesToSee },
+      { new: true }
+    ).then((newUser) => {
+      return { isChange, newUser };
+    });
+  },
 };
 
 const arraysContains = (_arr1, _arr2) => {
