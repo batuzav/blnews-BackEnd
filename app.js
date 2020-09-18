@@ -38,6 +38,7 @@ mongoose
       .input("input_parameter", sql.Int, 1387785)
       .query("Select *  From tbl_Distributor where LegacyNumber like 54091")
       .then((result) => {
+        console.log("FIESTA");
         console.dir(result.recordset, { maxArrayLength: null });
       })
       .catch((err) => console.error(err));
