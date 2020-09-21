@@ -36,8 +36,7 @@ module.exports = {
               title: campaign.title,
               sound: "default",
               body: campaign.bodyNotification || campaign.subtitle,
-              channelId:
-                "com.google.firebase.messaging.default_notification_channel_id",
+              channelId: "pushChannel",
             });
           }
         });
