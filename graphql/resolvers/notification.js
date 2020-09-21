@@ -36,7 +36,9 @@ module.exports = {
               title: campaign.title,
               sound: "default",
               body: campaign.bodyNotification || campaign.subtitle,
-              channelId: "pushChannel",
+              android: {
+                channelId: "pushChannel",
+              },
             });
           }
         });
