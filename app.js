@@ -28,20 +28,20 @@ tusk.start();
 mongoose
   .connect(`${process.env.DB}`, { useFindAndModify: false })
   .then(async () => {
-    const getDIB = await getConexion();
+    // const getDIB = await getConexion();
     const server = app.listen(`${process.env.PORT}`, () => {
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
     socketServer.startSocketServer(server);
-    getDIB
-      .request()
-      .input("input_parameter", sql.Int, 1387785)
-      .query("Select *  From tbl_Distributor where LegacyNumber like 54091")
-      .then((result) => {
-        console.log("FIESTA");
-        console.dir(result.recordset, { maxArrayLength: null });
-      })
-      .catch((err) => console.error(err));
+    // getDIB
+    //   .request()
+    //   .input("input_parameter", sql.Int, 1387785)
+    //   .query("Select *  From tbl_Distributor where LegacyNumber like 54091")
+    //   .then((result) => {
+    //     console.log("FIESTA");
+    //     console.dir(result.recordset, { maxArrayLength: null });
+    //   })
+    //   .catch((err) => console.error(err));
   })
   .catch((err) => {
     console.log(err);

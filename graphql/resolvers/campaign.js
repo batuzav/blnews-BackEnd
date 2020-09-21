@@ -47,7 +47,7 @@ module.exports = {
         throw err;
       });
   },
-  Campaigns: () => {
+  Campaigns: (req) => {
     const now = moment().toDate();
     return Campaign.find({
       startDate: { $lte: now.valueOf() },
@@ -77,7 +77,7 @@ module.exports = {
         throw err;
       });
   },
-  getCampaignsByCategory: ({ category }) => {
+  getCampaignsByCategory: ({ category }, req) => {
     const now = moment().toDate();
     console.log("categoria", category);
     return Campaign.find({
@@ -90,7 +90,7 @@ module.exports = {
       });
     });
   },
-  getCampaignById: async ({ id }) => {
+  getCampaignById: async ({ id }, req) => {
     const campaign = await Campaign.findByIdAsync({ _id: id }).then(
       (findedCampaign) => {
         return findedCampaign;
