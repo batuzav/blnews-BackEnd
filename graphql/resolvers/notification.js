@@ -37,7 +37,7 @@ module.exports = {
               sound: "default",
               body: campaign.bodyNotification || campaign.subtitle,
               android: {
-                channelId: "pushChannel",
+                channelId: "default_notification_channel_id",
               },
             });
           }
