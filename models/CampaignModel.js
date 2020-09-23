@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { object } = require("underscore");
 
 const Schema = mongoose.Schema;
 
@@ -58,6 +59,16 @@ const campaignSchema = new Schema({
   imageBody: {
     type: String,
     required: false,
+  },
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  counting: {
+    type: Number,
+    required: false,
+    default: 0,
   },
 });
 

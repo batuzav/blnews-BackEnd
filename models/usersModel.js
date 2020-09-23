@@ -40,12 +40,17 @@ const userSchema = new Schema({
     default: "none",
   },
   countriesToSee: {
-    type: [String],
-    default: ["MEX"],
+    type: [{}],
+    default: [{ value: "MXN", label: "México" }],
   },
   img: {
     type: String,
     default: "none",
+  },
+  systemType: {
+    type: String,
+    enum: ["user", "admin", "rhu", "rhb"],
+    default: "user",
   },
 });
 

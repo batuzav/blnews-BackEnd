@@ -6,7 +6,7 @@ const {
 const tusk = cron.schedule(
   "*/1 * * * *",
   () => {
-    sendPushNotificationAccordingCampaignAndUser();
+    //sendPushNotificationAccordingCampaignAndUser();
   },
   {
     scheduled: false,

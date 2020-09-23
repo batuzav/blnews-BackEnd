@@ -26,6 +26,7 @@ module.exports = {
         let { country } = campaign;
         const users = await getUsersByCountries({ countries: country });
         const clearUsers = _.compact(users);
+        console.log("clearUsers", clearUsers);
         clearUsers.map((clearUser) => {
           if (
             clearUser.tokkenApp !== "none" &&

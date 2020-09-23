@@ -24,6 +24,8 @@ type User {
     tokkenApp: String
     countriesToSee: [String!]
     img: String
+    systemType: String!
+    active: Boolean!
   }
 
   type Contact {
@@ -53,6 +55,9 @@ type User {
     status: Int!
     category: [String!]
     imageBody: String!
+    createdBy: ID!
+    counting: Int!
+    user: User!
   }
 
   input CampaignInput {
@@ -68,6 +73,8 @@ type User {
     status: Int!
     category: [String!]
     imageBody: String!
+    createdBy: ID!
+    
   }
 
   type tokenAuth {
@@ -85,6 +92,7 @@ type User {
     tokkenApp: String
     countriesToSee: [String!]
     img: String
+    systemType: String
   }
   input RegisterByAppInput {
     dibNumber: String!

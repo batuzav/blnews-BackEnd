@@ -23,4 +23,8 @@ const getConexion = async () => {
   return mssql;
 };
 
-module.exports = { getConexion };
+const knowDIBIsACtive = async ({ dibNumber }) => {
+  const getDIB = await getConexion();
+};
+
+module.exports = {};

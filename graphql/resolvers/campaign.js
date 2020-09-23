@@ -16,6 +16,7 @@ module.exports = {
       status,
       category,
       imageBody,
+      createdBy,
     } = args.campaignInput;
     return Campaign.findOne({ title })
       .then((campaign) => {
@@ -35,6 +36,7 @@ module.exports = {
           status,
           category,
           imageBody,
+          createdBy,
         });
         return newCampaign.save();
       })
@@ -47,7 +49,7 @@ module.exports = {
         throw err;
       });
   },
-  Campaigns: (req) => {
+  Campaigns: (args, req) => {
     const now = moment().toDate();
     return Campaign.find({
       startDate: { $lte: now.valueOf() },
@@ -100,7 +102,12 @@ module.exports = {
     if (!campaign) {
       throw new Error("Campaña no existe...");
     }
-
+    const edit = await Campaign.findByIdAndUpdateAsync(
+      { _id: id },
+      { counting: campaign.counting++ }
+    ).then((resolve) => {
+      return resolve;
+    });
     return campaign;
   },
 };
