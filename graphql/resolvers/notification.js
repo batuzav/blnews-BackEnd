@@ -38,6 +38,9 @@ module.exports = {
               sound: "default",
               body: campaign.bodyNotification || campaign.subtitle,
               channelId: "pushChannel",
+              data: {
+                campaignId: Campaign._id,
+              },
             });
           }
         });
