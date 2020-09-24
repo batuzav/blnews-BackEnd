@@ -1,15 +1,16 @@
 const Campaign = require("../../models/CampaignModel");
-const moment = require("moment");
+const moment = require("moment-timezone");
 const { getUsersByCountries } = require("../resolvers/users");
 const _ = require("underscore");
 const { Expo } = require("expo-server-sdk");
 const {
   sendNotificationWithExpoSDK,
 } = require("../../expoNotification/expoNotificationSDK");
-
+moment.locale("es");
 module.exports = {
   sendPushNotificationAccordingCampaignAndUser: () => {
-    const now = moment().toDate();
+    const now = moment().tz("America/Mexico_City").format();
+
     Campaign.find({
       startDate: { $lte: now.valueOf() },
       endDate: { $gte: now.valueOf() },
@@ -21,7 +22,6 @@ module.exports = {
           { notified: true },
           { new: true }
         );
-        console.log("edit", edit);
         let messages = [];
         let { country } = campaign;
         const users = await getUsersByCountries({ countries: country });

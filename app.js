@@ -11,9 +11,7 @@ const { getConexion } = require("./XirectDB/XirectDBConect");
 const converter = require("json-2-csv");
 const fs = require("fs");
 const sql = require("mssql");
-const moment = require("moment");
 Promise.promisifyAll(mongoose);
-moment.locale("es");
 
 const app = express();
 
@@ -32,8 +30,6 @@ mongoose
   .then(async () => {
     // const getDIB = await getConexion();
     const server = app.listen(`${process.env.PORT}`, () => {
-      const now = moment().toDate();
-      console.log("NOW:", now);
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
     socketServer.startSocketServer(server);
