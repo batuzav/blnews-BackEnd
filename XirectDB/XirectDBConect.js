@@ -25,6 +25,17 @@ const getConexion = async () => {
 
 const knowDIBIsACtive = async ({ dibNumber }) => {
   const getDIB = await getConexion();
+  const activity = await getDIB
+    .request()
+    .input("input_parameter", sql.Int, dibNumber)
+    .query(
+      "Select UserStatus  From tbl_Distributor where LegacyNumber like @input_parameter"
+    )
+    .then((result) => {
+      console.log("FIESTA");
+      console.dir(result.recordset, { maxArrayLength: null });
+    })
+    .catch((err) => console.error(err));
 };
 
-module.exports = {};
+module.exports = { getConexion };

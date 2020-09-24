@@ -113,6 +113,7 @@ type User {
       login(dibNumber: String!, password: String!, tokkenApp: String!): AuthData!
       checkLogin: tokenAuth!
       Campaigns: [Campaign!]!
+      getAllampaigns: [Campaign!]!
       getActiveCampaigns: [Campaign!]!
       getCampaignsByCategory(category: [String!]):[Campaign!]!
       getCampaignById(id: ID!): Campaign!

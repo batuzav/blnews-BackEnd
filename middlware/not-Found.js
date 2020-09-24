@@ -60,4 +60,10 @@ html, body{
 </style>
 `;
 
-module.exports = { notFound };
+const checkAuth = (req) => {
+  if (!req.isAuth) {
+    throw new Error("Unauthorized");
+  }
+};
+
+module.exports = { notFound, checkAuth };

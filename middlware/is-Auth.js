@@ -2,12 +2,15 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  console.log("AUTH:", req.headers.authorization);
+  req.isAuth = true;
+  console.log("req", req.isAuth);
   if (!authHeader) {
+    console.log("req.isAuth !", req.isAuth);
     req.isAuth = false;
     return next();
   }
   const token = authHeader.split(" ")[0];
+  console.log("token", token);
   if (!token || token === "") {
     req.isAuth = false;
     return next();
@@ -24,7 +27,6 @@ module.exports = (req, res, next) => {
     return next();
   }
   console.log("REQ EN MIDDLEWARE", token);
-  req.isAuth = true;
   req.userID = decodedToken.userId;
   next();
 };

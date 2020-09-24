@@ -31,7 +31,6 @@ module.exports = {
   },
   checkLogin: async (args, req) => {
     let isAuth = true;
-    console.log(" en resolvers req: ", req.isAuth);
     if (!req.isAuth) {
       isAuth = false;
     }

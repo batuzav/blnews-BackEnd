@@ -1,5 +1,7 @@
 const Campaign = require("../../models/CampaignModel");
+const User = require("../../models/usersModel");
 const moment = require("moment");
+const { checkAuth } = require("../../middlware/not-Found");
 
 module.exports = {
   createCampaign: (args) => {
@@ -58,6 +60,23 @@ module.exports = {
       .then((Campaigns) => {
         return Campaigns.map((campaign) => {
           return { ...campaign._doc, _id: campaign.id };
+        });
+      })
+      .catch((err) => {
+        throw err;
+      });
+  },
+  getAllampaigns: (args, req) => {
+    checkAuth(req);
+    return Campaign.find()
+      .then((Campaigns) => {
+        return Campaigns.map((campaign) => {
+          const user = User.findOneAsync({ _id: campaign.createdBy }).then(
+            (user) => {
+              return user;
+            }
+          );
+          return { ...campaign._doc, _id: campaign.id, user };
         });
       })
       .catch((err) => {

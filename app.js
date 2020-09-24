@@ -7,8 +7,10 @@ const isAuth = require("./middlware/is-Auth");
 const socketServer = require("./config/socket-server");
 const { tusk } = require("./cron/principalCron");
 const { notFound } = require("./middlware/not-Found");
+const { getConexion } = require("./XirectDB/XirectDBConect");
 const converter = require("json-2-csv");
 const fs = require("fs");
+const sql = require("mssql");
 Promise.promisifyAll(mongoose);
 
 const app = express();
@@ -33,10 +35,15 @@ mongoose
     socketServer.startSocketServer(server);
     // getDIB
     //   .request()
-    //   .input("input_parameter", sql.Int, 1387785)
-    //   .query("Select *  From tbl_Distributor where LegacyNumber like 54091")
+    //   .input("input_parameter", sql.Int, 6666)
+    //   .query(
+    //     "Select UserStatus, concat (FirstName,' ', MiddleName,' ',LastName) As Nombre  From tbl_Distributor where LegacyNumber like @input_parameter"
+    //   )
     //   .then((result) => {
     //     console.log("FIESTA");
+    //     if (result.recordset) {
+    //       console.log("HAY ALGO");
+    //     }
     //     console.dir(result.recordset, { maxArrayLength: null });
     //   })
     //   .catch((err) => console.error(err));
