@@ -93,6 +93,7 @@ type User {
     countriesToSee: [String!]
     img: String
     systemType: String
+    active: Boolean!
   }
   input RegisterByAppInput {
     dibNumber: String!

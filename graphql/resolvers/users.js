@@ -21,6 +21,7 @@ module.exports = {
           phone: args.userInput.phone,
           countriesToSee: args.userInput.countriesToSee,
           img: args.userInput.img,
+          active: args.userInput.active,
         });
         return user.save();
       })

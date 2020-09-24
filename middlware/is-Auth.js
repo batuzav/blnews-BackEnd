@@ -3,9 +3,7 @@ const jwt = require("jsonwebtoken");
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
   req.isAuth = true;
-  console.log("req", req.isAuth);
   if (!authHeader) {
-    console.log("req.isAuth !", req.isAuth);
     req.isAuth = false;
     return next();
   }
