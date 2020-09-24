@@ -39,7 +39,7 @@ module.exports = {
               body: campaign.bodyNotification || campaign.subtitle,
               channelId: "pushChannel",
               data: {
-                campaignId: Campaign._id,
+                campaignId: campaign._id,
               },
             });
           }
