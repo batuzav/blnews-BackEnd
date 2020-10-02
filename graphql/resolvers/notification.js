@@ -23,7 +23,7 @@ module.exports = {
           { new: true }
         );
         let messages = [];
-        let { country } = campaign;
+        let { country, startDate } = campaign;
         const users = await getUsersByCountries({ countries: country });
         const clearUsers = _.compact(users);
         console.log("clearUsers", clearUsers);

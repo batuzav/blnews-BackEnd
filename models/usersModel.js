@@ -40,8 +40,8 @@ const userSchema = new Schema({
     default: "none",
   },
   countriesToSee: {
-    type: [{}],
-    default: [{ value: "MXN", label: "México" }],
+    type: [String],
+    default: ["MEX"],
   },
   img: {
     type: String,

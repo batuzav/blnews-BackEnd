@@ -7,7 +7,11 @@ const isAuth = require("./middlware/is-Auth");
 const socketServer = require("./config/socket-server");
 const { tusk } = require("./cron/principalCron");
 const { notFound } = require("./middlware/not-Found");
-const { getConexion } = require("./XirectDB/XirectDBConect");
+const {
+  getConexion,
+  knowDIBIsACtive,
+  RegisterDibInApp,
+} = require("./XirectDB/XirectDBConect");
 const converter = require("json-2-csv");
 const fs = require("fs");
 const sql = require("mssql");
@@ -29,22 +33,30 @@ mongoose
   .connect(`${process.env.DB}`, { useFindAndModify: false })
   .then(async () => {
     // const getDIB = await getConexion();
+    // console.time();
+    // const isActive = await knowDIBIsACtive({ dibNumber: 416178 });
+    // console.log("isActive: ", isActive);
+    // console.timeEnd();
     const server = app.listen(`${process.env.PORT}`, () => {
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
     socketServer.startSocketServer(server);
+    console.time();
+    const dibData = await RegisterDibInApp({ dibNumber: 1712054 });
+    console.log("dibData", dibData);
+    console.timeEnd();
     // getDIB
     //   .request()
-    //   .input("input_parameter", sql.Int, 6666)
+    //   .input("input_parameter", sql.Int, 1712054)
     //   .query(
-    //     "Select UserStatus, concat (FirstName,' ', MiddleName,' ',LastName) As Nombre  From tbl_Distributor where LegacyNumber like @input_parameter"
+    //     "Select FirstName, LastName, EmailAddress, UserStatus, LegacyNumber, MarketName   From tbl_Distributor JOIN tbl_Markets ON tbl_Distributor.MarketID = tbl_Markets.ID  where LegacyNumber like @input_parameter"
     //   )
     //   .then((result) => {
     //     console.log("FIESTA");
-    //     if (result.recordset) {
+    //     if (result.recordset.length !== 0) {
     //       console.log("HAY ALGO");
+    //       console.dir(result.recordset[0], { maxArrayLength: null });
     //     }
-    //     console.dir(result.recordset, { maxArrayLength: null });
     //   })
     //   .catch((err) => console.error(err));
   })

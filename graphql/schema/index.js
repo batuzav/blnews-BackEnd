@@ -97,7 +97,6 @@ type User {
   }
   input RegisterByAppInput {
     dibNumber: String!
-    email: String!
     password: String!
     confirmPassword: String!
   }
