@@ -18,10 +18,10 @@ module.exports = {
     if (!isEqual) {
       throw new Error("PASSWORD INCORRECTO");
     }
-    const isActive = await knowDIBIsACtive({ dibNumber });
-    if (!isActive) {
-      throw new Error("Usuario no Activo");
-    }
+    // const isActive = await knowDIBIsACtive({ dibNumber });
+    // if (!isActive) {
+    //   throw new Error("Usuario no Activo");
+    // }
     const token = jwt.sign(
       { userId: user._id, dibNumber: user.dibNumber },
       `${process.env.tokencrypt}`,
