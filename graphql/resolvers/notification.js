@@ -10,20 +10,21 @@ moment.locale("es");
 module.exports = {
   sendPushNotificationAccordingCampaignAndUser: () => {
     const now = moment().tz("America/Mexico_City").format();
-
+    console.log("now: >>>>", now);
     Campaign.find({
       startDate: { $lte: now.valueOf() },
       endDate: { $gte: now.valueOf() },
       notified: false,
     }).then((campaigns) => {
       campaigns.map(async (campaign) => {
-        const edit = await Campaign.findOneAndUpdateAsync(
-          { _id: campaign._id },
-          { notified: true },
-          { new: true }
-        );
+        // const edit = await Campaign.findOneAndUpdateAsync(
+        //   { _id: campaign._id },
+        //   { notified: true },
+        //   { new: true }
+        // );
         let messages = [];
         let { country, startDate } = campaign;
+        // console.log("IsEqual: >>>>>", now.isSame(startDate));
         const users = await getUsersByCountries({ countries: country });
         const clearUsers = _.compact(users);
         console.log("clearUsers", clearUsers);
@@ -44,7 +45,7 @@ module.exports = {
             });
           }
         });
-        const Sending = await sendNotificationWithExpoSDK(messages);
+        // const Sending = await sendNotificationWithExpoSDK(messages);
         console.log("Sending", Sending);
       });
     });

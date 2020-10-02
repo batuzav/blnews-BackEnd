@@ -41,10 +41,6 @@ mongoose
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
     socketServer.startSocketServer(server);
-    console.time();
-    const dibData = await RegisterDibInApp({ dibNumber: 1712054 });
-    console.log("dibData", dibData);
-    console.timeEnd();
     // getDIB
     //   .request()
     //   .input("input_parameter", sql.Int, 1712054)
