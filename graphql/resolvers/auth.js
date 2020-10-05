@@ -40,10 +40,15 @@ module.exports = {
   loginDashboard: async ({ email, password }) => {},
   checkLogin: async (args, req) => {
     let isAuth = true;
+    let uid = "";
     if (!req.isAuth) {
       isAuth = false;
     }
-    return { isAuth };
+    if (req.userID) {
+      uid = req.userID;
+    }
+
+    return { isAuth, uid };
   },
   registerByApp: async (args) => {
     const { dibNumber, password, confirmPassword } = args.registerByAppInput;
