@@ -47,7 +47,7 @@ module.exports = {
     }
     if (req.userID) {
       uid = req.userID;
-      user = findOneAsync({ _id: uid }).then((user) => {
+      user = User.findOneAsync({ _id: uid }).then((user) => {
         return user;
       });
       if (!user) {
