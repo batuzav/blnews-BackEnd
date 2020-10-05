@@ -16,7 +16,6 @@ module.exports = (req, res, next) => {
   try {
     decodedToken = jwt.verify(token, `${process.env.tokencrypt}`);
   } catch (err) {
-    console.log("err ", err);
     req.isAuth = false;
     return next();
   }
@@ -24,7 +23,5 @@ module.exports = (req, res, next) => {
     req.isAuth = false;
     return next();
   }
-  console.log("REQ EN MIDDLEWARE", token);
   req.userID = decodedToken.userId;
-  next();
 };

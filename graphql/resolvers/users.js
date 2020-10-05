@@ -1,5 +1,6 @@
 const User = require("../../models/usersModel");
 const bcrypt = require("bcryptjs");
+const { checkAuth } = require("../../middlware/not-Found");
 
 module.exports = {
   createUser: (args) => {
@@ -42,6 +43,16 @@ module.exports = {
         if (inside) return { ...user._doc, _id: user.id };
       });
     });
+  },
+  getUserById: async ({ id }, req) => {
+    checkAuth(req);
+    const user = await User.findOneAsync({ _id: id }).then((user) => {
+      return user;
+    });
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+    return user;
   },
   updateUserTokkenApp: async ({ id, tokkenApp }) => {
     const userdb = await User.findOneAsync({ _id: id }).then((user) => {

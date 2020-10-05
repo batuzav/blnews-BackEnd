@@ -121,6 +121,7 @@ type User {
       getCampaignsByCategory(category: [String!]):[Campaign!]!
       getCampaignById(id: ID!): Campaign!
       updateUserTokkenApp(id: ID!, tokkenApp: String!): User!
+      getUserById(id: ID!): User!
 
 
   }
