@@ -81,6 +81,7 @@ type User {
       isAuth: Boolean!
       uid: ID
       user: User
+      
   }
 
   input UserInput {
