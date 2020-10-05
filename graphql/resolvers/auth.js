@@ -9,7 +9,6 @@ const {
 
 module.exports = {
   login: async ({ dibNumber, password, tokkenApp }) => {
-    console.log("dibNumber", dibNumber);
     const user = await User.findOne({ dibNumber });
     if (!user) {
       throw new Error("Usuario no existe");
@@ -37,6 +36,8 @@ module.exports = {
       user: newUser,
     };
   },
+
+  loginDashboard: async ({ email, password }) => {},
   checkLogin: async (args, req) => {
     let isAuth = true;
     if (!req.isAuth) {

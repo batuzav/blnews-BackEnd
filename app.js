@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const Promise = require("bluebird");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const isAuth = require("./middlware/is-Auth");
 const socketServer = require("./config/socket-server");
 const { tusk } = require("./cron/principalCron");
@@ -22,6 +23,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(isAuth);
+app.use(require("./config/accessConfig"));
+app.use(cors());
 app.use(require("./graphql/index"));
 app.get("*", (req, res) => {
   return res.status(404).send(notFound);

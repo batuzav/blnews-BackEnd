@@ -112,6 +112,7 @@ module.exports = {
     });
   },
   getCampaignById: async ({ id }, req) => {
+    checkAuth(req);
     const campaign = await Campaign.findByIdAsync({ _id: id }).then(
       (findedCampaign) => {
         return findedCampaign;
