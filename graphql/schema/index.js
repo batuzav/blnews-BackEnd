@@ -80,7 +80,7 @@ type User {
   type tokenAuth {
       isAuth: Boolean!
       uid: ID
-
+      user: User
   }
 
   input UserInput {

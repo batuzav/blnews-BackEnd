@@ -41,14 +41,21 @@ module.exports = {
   checkLogin: async (args, req) => {
     let isAuth = true;
     let uid = "";
+    let user = {};
     if (!req.isAuth) {
       isAuth = false;
     }
     if (req.userID) {
       uid = req.userID;
+      user = findOneAsync({ _id: uid }).then((user) => {
+        return user;
+      });
+      if (!user) {
+        user = {};
+      }
     }
 
-    return { isAuth, uid };
+    return { isAuth, uid, user };
   },
   registerByApp: async (args) => {
     const { dibNumber, password, confirmPassword } = args.registerByAppInput;
