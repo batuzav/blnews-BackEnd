@@ -25,11 +25,6 @@ module.exports = {
             moment(startDate).tz("America/Mexico_City").format()
           )
         ) {
-          const edit = await Campaign.findOneAndUpdateAsync(
-            { _id: campaign._id },
-            { notified: true },
-            { new: true }
-          );
           const users = await getUsersByCountries({ countries: country });
           const clearUsers = _.compact(users);
           clearUsers.map((clearUser) => {
@@ -49,6 +44,7 @@ module.exports = {
               });
             }
           });
+          console.log("messages", messages);
           const Sending = await sendNotificationWithExpoSDK(messages);
           console.log("Sending", Sending);
         }
