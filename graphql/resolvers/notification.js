@@ -50,6 +50,7 @@ module.exports = {
             }
           });
           const Sending = await sendNotificationWithExpoSDK(messages);
+          console.log("Sending", Sending);
         }
       });
     });

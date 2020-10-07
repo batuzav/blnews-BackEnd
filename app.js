@@ -44,6 +44,8 @@ mongoose
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
     socketServer.startSocketServer(server);
+    const now = moment().tz("America/Mexico_City").format();
+    console.log("now", now);
     // getDIB
     //   .request()
     //   .input("input_parameter", sql.Int, 1712054)
