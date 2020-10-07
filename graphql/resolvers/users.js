@@ -58,7 +58,6 @@ module.exports = {
     const userdb = await User.findOneAsync({ _id: id }).then((user) => {
       return user;
     });
-    console.log("letras: ", userdb);
     if (!userdb) {
       throw new Error("USUARIO NO EXISTE.");
     }
