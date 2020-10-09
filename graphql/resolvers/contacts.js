@@ -16,7 +16,6 @@ module.exports = {
         return newContact.save();
       })
       .then((result) => {
-        console.log(result);
         return { ...result._doc, _id: result._doc._id.toString() };
       })
       .catch((err) => {

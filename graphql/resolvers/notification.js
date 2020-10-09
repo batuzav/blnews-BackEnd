@@ -11,7 +11,6 @@ moment.locale("es");
 module.exports = {
   sendPushNotificationAccordingCampaignAndUser: () => {
     const now = moment().tz("America/Mexico_City").format();
-    console.log("now: >>>>", now);
     Campaign.find({
       startDate: { $lte: now.valueOf() },
       endDate: { $gte: now.valueOf() },

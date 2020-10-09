@@ -103,6 +103,7 @@ type User {
     email: String!
     password: String!
     confirmPassword: String!
+    tokkenApp: String
   }
   type RegisterAuth {
     isRegister: Boolean!

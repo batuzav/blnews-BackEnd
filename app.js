@@ -35,7 +35,7 @@ tusk.start();
 mongoose
   .connect(`${process.env.DB}`, { useFindAndModify: false })
   .then(async () => {
-    // const getDIB = await getConexion();
+   const getDIB = await getConexion();
     // console.time();
     // const isActive = await knowDIBIsACtive({ dibNumber: 416178 });
     // console.log("isActive: ", isActive);
@@ -44,22 +44,20 @@ mongoose
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
     });
     socketServer.startSocketServer(server);
-    const now = moment().tz("America/Mexico_City").format();
-    console.log("now", now);
-    // getDIB
-    //   .request()
-    //   .input("input_parameter", sql.Int, 1712054)
-    //   .query(
-    //     "Select FirstName, LastName, EmailAddress, UserStatus, LegacyNumber, MarketName   From tbl_Distributor JOIN tbl_Markets ON tbl_Distributor.MarketID = tbl_Markets.ID  where LegacyNumber like @input_parameter"
-    //   )
-    //   .then((result) => {
-    //     console.log("FIESTA");
-    //     if (result.recordset.length !== 0) {
-    //       console.log("HAY ALGO");
-    //       console.dir(result.recordset[0], { maxArrayLength: null });
-    //     }
-    //   })
-    //   .catch((err) => console.error(err));
+    getDIB
+      .request()
+      .input("input_parameter", sql.Int, 1709367)
+      .query(
+        "Select FirstName, LastName, EmailAddress, UserStatus, LegacyNumber, MarketName   From tbl_Distributor JOIN tbl_Markets ON tbl_Distributor.MarketID = tbl_Markets.ID  where LegacyNumber like @input_parameter"
+      )
+      .then((result) => {
+        console.log("FIESTA");
+        if (result.recordset.length !== 0) {
+          console.log("HAY ALGO");
+          console.dir(result.recordset[0], { maxArrayLength: null });
+        }
+      })
+      .catch((err) => console.error(err));
   })
   .catch((err) => {
     console.log(err);

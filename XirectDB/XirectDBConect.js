@@ -17,7 +17,6 @@ sql.on("error", (err) => {
 
 const getConexion = async () => {
   const mssql = await sql.connect(config).then((pool) => {
-    console.log("Conexión realizada");
     return pool;
   });
   return mssql;

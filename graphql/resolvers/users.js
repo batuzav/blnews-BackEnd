@@ -36,7 +36,6 @@ module.exports = {
       });
   },
   getUsersByCountries: ({ countries }) => {
-    console.log("countries", countries);
     return User.find({ active: true }).then((users) => {
       return users.map((user) => {
         const inside = arraysContains(countries, user.countriesToSee);
@@ -80,7 +79,6 @@ module.exports = {
     const userdb = await User.findOneAsync({ dibNumber }).then((user) => {
       return user;
     });
-    console.log("userdb", userdb);
     if (!userdb) {
       isChange = false;
       return { isChange };

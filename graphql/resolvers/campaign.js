@@ -43,7 +43,6 @@ module.exports = {
         return newCampaign.save();
       })
       .then((result) => {
-        console.log(result);
         return { ...result._doc, _id: result._doc._id.toString() };
       })
       .catch((err) => {
@@ -100,7 +99,6 @@ module.exports = {
   },
   getCampaignsByCategory: ({ category }, req) => {
     const now = moment().toDate();
-    console.log("categoria", category);
     return Campaign.find({
       startDate: { $lte: now.valueOf() },
       endDate: { $gte: now.valueOf() },
@@ -118,7 +116,6 @@ module.exports = {
         return findedCampaign;
       }
     );
-    console.log("Campaña: ", campaign);
     if (!campaign) {
       throw new Error("Campaña no existe...");
     }

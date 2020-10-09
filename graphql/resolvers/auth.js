@@ -54,7 +54,12 @@ module.exports = {
     return { isAuth, uid, user };
   },
   registerByApp: async (args) => {
-    const { dibNumber, password, confirmPassword } = args.registerByAppInput;
+    const {
+      dibNumber,
+      password,
+      confirmPassword,
+      tokkenApp,
+    } = args.registerByAppInput;
     let isRegister = true;
     if (password !== confirmPassword) {
       throw new Error("Contraseñas no son identicas...");
@@ -97,7 +102,7 @@ module.exports = {
       timezone: "none",
       phone,
       countriesToSee,
-      img,
+      img: img === null ? "none" : img,
       active: true,
     });
     const savedUser = await currentUser.save();
