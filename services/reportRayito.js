@@ -52,14 +52,22 @@ app.get("/reportes", async (req, res) => {
                 // console.log(csv);
             
                 // write CSV to a file
-                fs.writeFileSync(filePath, csv, 'utf8',  { flag: 'wx' },function (err) {
-                    if (err) {
-                      console.log('Some error occured - file either not saved or corrupted file saved.');
-                      console.log('ERROR CRECIENTE: >>>>>', err);
-                    } else{
-                      console.log('It\'s saved!');
-                    }
-                  });
+                try {
+                    fs.writeFileSync(filePath, csv);
+                }
+                catch(e) {
+                    console.log('Some error occured - file either not saved or corrupted file saved.');
+                    console.log('ERROR >>>>>', e)
+                }
+
+                // fs.writeFileSync(filePath, csv, 'utf8',  { flag: 'wx' },function (err) {
+                //     if (err) {
+                //       console.log('Some error occured - file either not saved or corrupted file saved.');
+                //       console.log('ERROR CRECIENTE: >>>>>', err);
+                //     } else{
+                //       console.log('It\'s saved!');
+                //     }
+                //   });
                 // res.download(`../public/converted_report_${now}.csv`, `converted_report_${now}.csv`);
             
             }).catch(err => console.log(err));
