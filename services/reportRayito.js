@@ -8,10 +8,6 @@ const moment = require("moment-timezone");
 const converter = require("json-2-csv");
 const { getConexion } = require("../XirectDB/XirectDBConect");
 
-require("../public")
-
-
-
 
 app.get("/reportes", async (req, res) => {
     const yesterday = moment().tz("America/Mexico_City").subtract(3,'d').format('YYYY-MM-DD');
@@ -55,10 +51,13 @@ app.get("/reportes", async (req, res) => {
                 // console.log(csv);
             
                 // write CSV to a file
-                fs.writeFileSync(`../public/converted_report_${now}.csv`, csv, function (err) {
-                    if (err) throw err;
-                    console.log('File is created successfully.');
-                  });  
+                fs.writeFileSync(`../public/converted_report_${now}.csv`, 'utf8', function (err) {
+                    if (err) {
+                      console.log('Some error occured - file either not saved or corrupted file saved.');
+                    } else{
+                      console.log('It\'s saved!');
+                    }
+                  });
                 // res.download(`../public/converted_report_${now}.csv`, `converted_report_${now}.csv`);
             
             }).catch(err => console.log(err));
