@@ -14,3 +14,5 @@ process.env.xirectServer = "bodylogic.database.windows.net";
 process.env.xirectDataBase = "BodyLogic_Live";
 process.env.xirectUserDB = "bodylogicuser";
 process.env.xirectUserDBPassword = "UMw$a8Zx5gx5du";
+
+process.env.cloudMersiveAPIKEY = "85ebb616-82dd-4344-9bc6-4119ccef71fc";
