@@ -8,7 +8,7 @@ const moment = require("moment-timezone");
 const converter = require("json-2-csv");
 const { getConexion } = require("../XirectDB/XirectDBConect");
 
-
+require("../public")
 
 
 
@@ -55,8 +55,8 @@ app.get("/reportes", async (req, res) => {
                 // console.log(csv);
             
                 // write CSV to a file
-                fs.writeFileSync(`../public/converted_report_${now}.csv`, csv);
-                res.download(`../public/converted_report_${now}.csv`, `converted_report_${now}.csv`);
+                fs.writeFileSync(path.join(__dirname, `/converted_report_${now}.csv`), csv);
+                // res.download(`../public/converted_report_${now}.csv`, `converted_report_${now}.csv`);
             
             }).catch(err => console.log(err));
         
