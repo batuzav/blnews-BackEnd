@@ -48,27 +48,17 @@ app.get("/reportes", async (req, res) => {
         if (result.recordset) {
             console.log("HAY ALGO");
             console.table(result.recordset);
-        
-            converter.json2csv(result.recordset, (err, csv) => {
-            if (err) {
-                throw err;
-            }
-            // const destination = path.join(__dirname, `converted_report_${yesterday}.xlsx`);
-               
-            // try {
-            //     convertCsvToXlsx(csv, destination);
-            //   } catch (e) {
-            //     console.error(e.toString());
-            //   }
-            fs.writeFileSync(`../public/Reporte_${now}.csv`, csv);
+
+            converter.json2csvAsync(result.recordset).then(csv => {
+
+                // print CSV string
+                console.log(csv);
             
-            })
-            .catch(err => {
-                res.status(400).json({
-                    ok: false,
-                    err
-                });
-            });
+                // write CSV to a file
+                fs.writeFileSync('todos.csv', csv);
+            
+            }).catch(err => console.log(err));
+        
         }// 
       })
       .catch((err) => {
@@ -77,6 +67,7 @@ app.get("/reportes", async (req, res) => {
             ok: false,
             err
         });
+        
         res.json({
             ok: true,
         });
