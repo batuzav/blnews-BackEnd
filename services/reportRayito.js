@@ -55,7 +55,7 @@ app.get("/reportes", async (req, res) => {
                 // console.log(csv);
             
                 // write CSV to a file
-                fs.writeFileSync(path.join(__dirname, `converted_report_${now}.csv`), csv, function (err) {
+                fs.writeFileSync(`../public/converted_report_${now}.csv`, csv, function (err) {
                     if (err) throw err;
                     console.log('File is created successfully.');
                   });  
