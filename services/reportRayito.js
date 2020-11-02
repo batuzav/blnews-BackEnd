@@ -55,6 +55,8 @@ app.get("/reportes", async (req, res) => {
                 console.log(csv);
             
                 // write CSV to a file
+
+                res.download(csv, `report_${now}.csv`);
                 fs.writeFileSync('todos.csv', csv);
             
             }).catch(err => console.log(err));
