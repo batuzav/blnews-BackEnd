@@ -52,7 +52,7 @@ app.get("/reportes", async (req, res) => {
                 // console.log(csv);
             
                 // write CSV to a file
-                fs.writeFile(filePath, csv, 'utf8',  { flag: 'wx' },function (err) {
+                fs.writeFileSync(filePath, csv, 'utf8',  { flag: 'wx' },function (err) {
                     if (err) {
                       console.log('Some error occured - file either not saved or corrupted file saved.');
                       console.log('ERROR CRECIENTE: >>>>>', err);
