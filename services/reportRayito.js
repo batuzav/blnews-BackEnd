@@ -14,7 +14,7 @@ const { getConexion } = require("../XirectDB/XirectDBConect");
 
 
 app.get("/reportes", async (req, res) => {
-    const yesterday = moment().tz("America/Mexico_City").subtract(4,'d').format('YYYY-MM-DD');
+    const yesterday = moment().tz("America/Mexico_City").subtract(3,'d').format('YYYY-MM-DD');
     const now = moment().tz("America/Mexico_City").format('YYYY-MM-DD');
     // converter.json2csv(CategoriesOptions, (err, csv) => {
     //     if (err) {
@@ -47,17 +47,16 @@ app.get("/reportes", async (req, res) => {
         console.log("FIESTA");
         if (result.recordset) {
             console.log("HAY ALGO");
-            console.table(result.recordset);
+            // console.table(result.recordset);
 
             converter.json2csvAsync(result.recordset).then(csv => {
 
                 // print CSV string
-                console.log(csv);
+                // console.log(csv);
             
                 // write CSV to a file
-
-                res.download(csv, `report_${now}.csv`);
-                fs.writeFileSync('todos.csv', csv);
+                fs.writeFileSync(`../public/converted_report_${now}.csv`, csv);
+                res.download(`../public/converted_report_${now}.csv`, `converted_report_${now}.csv`);
             
             }).catch(err => console.log(err));
         
