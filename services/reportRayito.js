@@ -60,7 +60,7 @@ app.get("/reportes", async (req, res) => {
             //   } catch (e) {
             //     console.error(e.toString());
             //   }
-            fs.writeFileSync(`../public/Reporte_${now}.csv`, data);
+            fs.writeFileSync(`../public/Reporte_${now}.csv`, csv);
             
             })
             .catch(err => {
