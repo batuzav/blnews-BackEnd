@@ -54,6 +54,7 @@ app.get("/reportes", async (req, res) => {
                 fs.writeFile(`../public/converted_report_${now}.csv`, 'utf8', function (err) {
                     if (err) {
                       console.log('Some error occured - file either not saved or corrupted file saved.');
+                      console.log('ERROR CRECIENTE: >>>>>', err);
                     } else{
                       console.log('It\'s saved!');
                     }
