@@ -46,12 +46,13 @@ app.get("/reportes", async (req, res) => {
             // console.table(result.recordset);
 
             converter.json2csvAsync(result.recordset).then(csv => {
+                const filePath = `../public/converted_report_${now}.csv`;
 
                 // print CSV string
                 // console.log(csv);
             
                 // write CSV to a file
-                fs.writeFile(`../public/converted_report_${now}.csv`, 'utf8',  { flag: 'wx' },function (err) {
+                fs.writeFile(filePath, csv, 'utf8',  { flag: 'wx' },function (err) {
                     if (err) {
                       console.log('Some error occured - file either not saved or corrupted file saved.');
                       console.log('ERROR CRECIENTE: >>>>>', err);
