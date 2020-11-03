@@ -54,6 +54,7 @@ app.get("/reportes", async (req, res) => {
                 // write CSV to a file
                 try {
                     fs.writeFileSync(filePath, csv);
+                    res.download(filePath);
                 }
                 catch(e) {
                     console.log('Some error occured - file either not saved or corrupted file saved.');
