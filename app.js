@@ -5,12 +5,8 @@ const Promise = require("bluebird");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const isAuth = require("./middlware/is-Auth");
-const socketServer = require("./config/socket-server");
 const { tusk } = require("./cron/principalCron");
 const { notFound } = require("./middlware/not-Found");
-const fs = require("fs");
-const sql = require("mssql");
-const path = require('path');
 Promise.promisifyAll(mongoose);
 
 const app = express();
