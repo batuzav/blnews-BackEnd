@@ -46,7 +46,7 @@ app.get("/reportes", async (req, res) => {
             // console.table(result.recordset);
 
             converter.json2csvAsync(result.recordset).then(csv => {
-                const filePath = path.join(__dirname + `/public/converted_report_${now}.csv`);
+                const filePath = path.join(__dirname + `/public/convertedReport${now.replace("-", "")}.csv`);
 
                 // print CSV string
                 // console.log(csv);
