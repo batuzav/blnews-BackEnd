@@ -43,7 +43,8 @@ module.exports = {
         return newCampaign.save();
       })
       .then((result) => {
-        return { ...result._doc, _id: result._doc._id.toString() };
+        const user = User.findOneAsync({_id: result._doc.createdBy}).then(user => {return user});
+        return { ...result._doc, _id: result._doc._id.toString(), user };
       })
       .catch((err) => {
         console.log(err);

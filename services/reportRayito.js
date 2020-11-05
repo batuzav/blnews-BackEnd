@@ -10,22 +10,8 @@ const { getConexion } = require("../XirectDB/XirectDBConect");
 
 
 app.get("/reportes", async (req, res) => {
-    const yesterday = moment().tz("America/Mexico_City").subtract(3,'d').format('YYYY-MM-DD');
+    const yesterday = moment().tz("America/Mexico_City").subtract(1,'d').format('YYYY-MM-DD');
     const now = moment().tz("America/Mexico_City").format('YYYY-MM-DD');
-    // converter.json2csv(CategoriesOptions, (err, csv) => {
-    //     if (err) {
-    //         throw err;
-    //     }
-    //     const destination = path.join(__dirname, `converted_report_${yesterday}.xlsx`);
-            
-    //     try {
-    //         convertCsvToXlsx(csv, destination);
-    //         } 
-    //     catch (e) {
-    //         console.error(e.toString());
-    //         }
-        
-    //     })
     // ---------------PRODUCTIVO-----------------
     const getDIB = await getConexion();
     await getDIB
@@ -60,16 +46,6 @@ app.get("/reportes", async (req, res) => {
                     console.log('Some error occured - file either not saved or corrupted file saved.');
                     console.log('ERROR >>>>>', e)
                 }
-
-                // fs.writeFileSync(filePath, csv, 'utf8',  { flag: 'wx' },function (err) {
-                //     if (err) {
-                //       console.log('Some error occured - file either not saved or corrupted file saved.');
-                //       console.log('ERROR CRECIENTE: >>>>>', err);
-                //     } else{
-                //       console.log('It\'s saved!');
-                //     }
-                //   });
-                // res.download(`../public/converted_report_${now}.csv`, `converted_report_${now}.csv`);
             
             }).catch(err => console.log(err));
         
