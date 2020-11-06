@@ -51,6 +51,61 @@ module.exports = {
         throw err;
       });
   },
+  updateCampaign: (args) => {
+    const {
+      title,
+      subtitle,
+      description,
+      country,
+      img,
+      timezone,
+      startDate,
+      endDate,
+      allUsers,
+      status,
+      category,
+      imageBody,
+      createdBy
+    } = args.campaignInput;
+    console.log('args.id', args.id)
+    return Campaign.findOneAndUpdate(
+      { _id: args.id },
+      { title,
+        subtitle,
+        description,
+        country,
+        img,
+        timezone,
+        startDate,
+        endDate,
+        allUsers,
+        status,
+        category,
+        imageBody, },
+      { new: true }
+    ).then(async (Campaign) => {
+      const user = await User.findOneAsync({_id: createdBy}).then(user => {return user});
+      console.log('user', user);
+      console.log('result', Campaign);
+      return {...{...Campaign, subtitle: Campaign.subtitle, 
+        title: Campaign.title,  
+        _id: args.id,
+        counting: Campaign.counting,
+        description: Campaign.description,
+        country: Campaign.country,
+        img: Campaign.img,
+        timezone: Campaign.timezone,
+        startDate: Campaign.startDate,
+        endDate: Campaign.endDate,
+        allUsers: Campaign.allUsers,
+        status: Campaign.status,
+        category: Campaign.category,
+        imageBody: Campaign.imageBody,
+        createdBy: Campaign.createdBy}, user};
+    }).catch((err) => {
+      throw err;
+    });;
+  },
   Campaigns: (args, req) => {
     const now = moment().toDate();
     return Campaign.find({

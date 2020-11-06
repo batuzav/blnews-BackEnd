@@ -73,8 +73,7 @@ type User {
     status: Int!
     category: [String!]
     imageBody: String!
-    createdBy: ID!
-    
+    createdBy: ID!  
   }
 
   type tokenAuth {
@@ -132,6 +131,7 @@ type User {
     createUser(userInput: UserInput): User
     createContact(contactInput: ContactInput!): Contact
     createCampaign(campaignInput: CampaignInput): Campaign
+    updateCampaign(campaignInput: CampaignInput, id: ID!): Campaign
     registerByApp(registerByAppInput: RegisterByAppInput): RegisterAuth
     changeCountriesToSee(dibNumber: String!, countriesToSee: [String!]): CountriesToChange
 

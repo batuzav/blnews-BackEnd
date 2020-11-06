@@ -33,32 +33,32 @@ mongoose
   .then(async () => {
     const server = app.listen(`${process.env.PORT}`, async () => {
       console.log(`Se esta escuchando el puerto:  ${process.env.PORT}`);
-      const getDIB = await getConexion();
-    await getDIB
-      .request()
-      .query(`SELECT TABLE_NAME
-      FROM INFORMATION_SCHEMA.COLUMNS
-      WHERE COLUMN_NAME = 'TrackingNumber'
-      ORDER BY DATA_TYPE`)
-      .then((result) => {
-        console.log("FIESTA");
-        if (result.recordset) {
-            console.log("HAY ALGO");
-            console.table(result.recordset);
-        }// 
-      })
-      .catch((err) => {
-        console.log('err', err)
-        res.status(400).json({
-            ok: false,
-            err
-        });
+    //   const getDIB = await getConexion();
+    // await getDIB
+    //   .request()
+    //   .query(`SELECT TABLE_NAME
+    //   FROM INFORMATION_SCHEMA.COLUMNS
+    //   WHERE COLUMN_NAME = 'TrackingNumber'
+    //   ORDER BY DATA_TYPE`)
+    //   .then((result) => {
+    //     console.log("FIESTA");
+    //     if (result.recordset) {
+    //         console.log("HAY ALGO");
+    //         console.table(result.recordset);
+    //     }// 
+    //   })
+    //   .catch((err) => {
+    //     console.log('err', err)
+    //     res.status(400).json({
+    //         ok: false,
+    //         err
+    //     });
         
-        res.json({
-            ok: true,
-        });
+    //     res.json({
+    //         ok: true,
+    //     });
   
-    });
+    // });
     })
     
   
